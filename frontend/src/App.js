@@ -12,17 +12,15 @@ function App() {
 
   async function getUserData() {
     const data = await fetch("http://localhost:3000/getUser");
-    console.log(data);
     const userData = await data.json();
     setUserData(userData);
   }
 
   useEffect(() => {
-    console.log("use Effect is called");
     getUserData();
   }, []);
 
-  console.log(userData);
+
 
   function deleteUser(id) {
 
@@ -34,18 +32,17 @@ function App() {
 
   }
 
-
-
-  console.log(userData);
   return (
     <div className="App">
       <h2>Hello user</h2>
       <table>
-        {userData && userData.map((data) => {
-          return (
-            <UserData props={{ data, deleteUser }}></UserData>
-          )
-        })}
+        <tbody>
+          {userData && userData.map((data, index) => {
+            return (
+              <UserData key={index} props={{ data, deleteUser }}></UserData>
+            )
+          })}
+        </tbody>
       </table>
     </div>
   );

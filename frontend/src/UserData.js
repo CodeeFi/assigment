@@ -2,7 +2,7 @@ import React from 'react'
 
 
 function UserData({ props }) {
-    console.log(props);
+
     return (
         <>
             <tr>
